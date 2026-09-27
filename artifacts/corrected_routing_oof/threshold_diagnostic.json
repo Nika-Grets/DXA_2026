@@ -1,0 +1,56 @@
+{
+  "spine_position": {
+    "thresholds": [
+      0.02,
+      0.02,
+      0.02,
+      0.02,
+      0.02
+    ],
+    "mean_threshold": 0.02,
+    "TP": 5,
+    "TN": 71,
+    "FP": 22,
+    "FN": 1,
+    "F1": 0.30303030303030304,
+    "Sensitivity": 0.8333333333333334,
+    "Specificity": 0.7634408602150538,
+    "OOF_AUC": null
+  },
+  "spine_axis": {
+    "thresholds": [
+      0.02,
+      0.03,
+      0.02,
+      0.02,
+      0.03
+    ],
+    "mean_threshold": 0.024,
+    "TP": 5,
+    "TN": 67,
+    "FP": 22,
+    "FN": 5,
+    "F1": 0.2702702702702703,
+    "Sensitivity": 0.5,
+    "Specificity": 0.7528089887640449,
+    "OOF_AUC": null
+  },
+  "spine_artifact": {
+    "thresholds": [
+      0.03,
+      0.03,
+      0.03,
+      0.03,
+      0.03
+    ],
+    "mean_threshold": 0.03,
+    "TP": 7,
+    "TN": 51,
+    "FP": 31,
+    "FN": 10,
+    "F1": 0.2545454545454545,
+    "Sensitivity": 0.4117647058823529,
+    "Specificity": 0.6219512195121951,
+    "OOF_AUC": null
+  }
+}

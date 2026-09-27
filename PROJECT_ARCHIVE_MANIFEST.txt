@@ -1,0 +1,19 @@
+# DXA V6.9 MVP — submission archive manifest
+
+Included:
+- backend source code and tests
+- frontend source code and package-lock.json
+- production model artifacts under artifacts/models/
+- evaluation/provenance artifacts under artifacts/
+- official documentation under docs/
+- README.md and requirements.txt
+- Docker configuration and .env.example
+
+Intentionally excluded:
+- .env and all secrets
+- data/ runtime database, uploaded studies, generated CSV/ZIP outputs
+- .training_dicom/ local training/reference DICOM
+- frontend/node_modules/ and frontend/dist/
+- Python caches, logs and virtual environments
+
+Runtime data is created under the Docker volume `dexa_data` or local `data/`.

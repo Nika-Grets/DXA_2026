@@ -1,0 +1,9 @@
+V6.8 smoke report — 2026-09-20
+
+compileall: PASS
+supplied test ZIP routing + quality_prob: PASS
+training labelled criterion route coverage: 0 missing
+OOF protocol: StratifiedGroupKFold, 5 folds, StudyInstanceUID groups, seed 42
+final criterion models: fit on all labelled criterion samples after OOF
+quality_prob range: [0,1]
+independent final-test metrics: NOT CLAIMED

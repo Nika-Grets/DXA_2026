@@ -1,0 +1,21 @@
+{
+  "n_hip_images": 153,
+  "confidence_quantiles": [
+    0.4762457488471829,
+    0.6249538706512355,
+    0.6499646972948596,
+    0.7157087887054927,
+    0.7417749743234112,
+    0.747274909047361,
+    0.9991630792651637
+  ],
+  "roi_clipped_count": 151,
+  "roi_clipped_fraction": 0.9869281045751634,
+  "route_audit": {
+    "n_studies": 100,
+    "n_images": 252,
+    "n_3image": 74,
+    "three_image_expected_pattern": 74,
+    "three_image_pattern_ok": 74
+  }
+}

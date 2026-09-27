@@ -1,0 +1,43 @@
+{
+  "source": "Pelvis.v1i.coco-segmentation",
+  "category": "FEMUR",
+  "n_annotations": 916,
+  "stats": {
+    "bbox_w_frac": {
+      "median": 0.22912185314685315,
+      "q10": 0.2023256932007281,
+      "q90": 0.2574438667847526
+    },
+    "bbox_h_frac": {
+      "median": 0.27291562282533055,
+      "q10": 0.2217101600556715,
+      "q90": 0.3573170138458871
+    },
+    "bbox_area_frac": {
+      "median": 0.06387879041275651,
+      "q10": 0.04629768450929725,
+      "q90": 0.08680455317213612
+    },
+    "aspect": {
+      "median": 0.8965972353047318,
+      "q10": 0.7607950157907257,
+      "q90": 1.032527880896466
+    },
+    "mask_area_norm": {
+      "median": 0.5987472534179688,
+      "q10": 0.56072998046875,
+      "q90": 0.634765625
+    },
+    "cx_norm": {
+      "median": 0.5002325491319408,
+      "q10": 0.46626545609477643,
+      "q90": 0.5336851670056653
+    },
+    "cy_norm": {
+      "median": 0.48880811096042054,
+      "q10": 0.4682706109662443,
+      "q90": 0.5072741690351463
+    }
+  },
+  "note": "Soft anatomy prior only; source is AP pelvis radiography and must not be treated as validated DXA localization ground truth."
+}

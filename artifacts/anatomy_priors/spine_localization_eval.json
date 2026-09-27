@@ -1,0 +1,23 @@
+{
+  "n_spine_studies": 99,
+  "confidence_quantiles": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "axis_quantiles": [
+    0.1346251055729865,
+    1.415694196739125,
+    3.864781721942629,
+    9.836621502590397,
+    16.27587992429791,
+    20.647258327756525,
+    25.98606257905677
+  ],
+  "low_confidence_lt_0.4": 0,
+  "note": "Localization geometry is an explainable candidate path; axis is not yet used as the validated quality decision."
+}

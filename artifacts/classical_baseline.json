@@ -1,0 +1,142 @@
+{
+  "spine_position": {
+    "n": 99,
+    "positive": 6,
+    "negative": 93,
+    "status": "ok",
+    "f1": 0.0,
+    "balanced_accuracy": 0.489247311827957,
+    "roc_auc": 0.6344086021505376,
+    "pr_auc": 0.12998249665592465,
+    "confusion_matrix": [
+      [
+        91,
+        2
+      ],
+      [
+        6,
+        0
+      ]
+    ]
+  },
+  "spine_axis": {
+    "n": 99,
+    "positive": 10,
+    "negative": 89,
+    "status": "ok",
+    "f1": 0.13333333333333333,
+    "balanced_accuracy": 0.5275280898876404,
+    "roc_auc": 0.550561797752809,
+    "pr_auc": 0.149247155260826,
+    "confusion_matrix": [
+      [
+        85,
+        4
+      ],
+      [
+        9,
+        1
+      ]
+    ]
+  },
+  "spine_artifact": {
+    "n": 99,
+    "positive": 17,
+    "negative": 82,
+    "status": "ok",
+    "f1": 0.06896551724137931,
+    "balanced_accuracy": 0.46233859397417504,
+    "roc_auc": 0.5545193687230989,
+    "pr_auc": 0.1981254541336434,
+    "confusion_matrix": [
+      [
+        71,
+        11
+      ],
+      [
+        16,
+        1
+      ]
+    ]
+  },
+  "right_posrot": {
+    "n": 72,
+    "positive": 17,
+    "negative": 55,
+    "status": "ok",
+    "f1": 0.4666666666666667,
+    "balanced_accuracy": 0.651336898395722,
+    "roc_auc": 0.6074866310160428,
+    "pr_auc": 0.3859703511379886,
+    "confusion_matrix": [
+      [
+        49,
+        6
+      ],
+      [
+        10,
+        7
+      ]
+    ]
+  },
+  "right_roi": {
+    "n": 72,
+    "positive": 3,
+    "negative": 69,
+    "status": "ok",
+    "f1": 0.0,
+    "balanced_accuracy": 0.4927536231884058,
+    "roc_auc": 0.9033816425120773,
+    "pr_auc": 0.33040935672514615,
+    "confusion_matrix": [
+      [
+        68,
+        1
+      ],
+      [
+        3,
+        0
+      ]
+    ]
+  },
+  "left_posrot": {
+    "n": 78,
+    "positive": 19,
+    "negative": 59,
+    "status": "ok",
+    "f1": 0.2857142857142857,
+    "balanced_accuracy": 0.5138269402319358,
+    "roc_auc": 0.4629794826048171,
+    "pr_auc": 0.2913085687646303,
+    "confusion_matrix": [
+      [
+        42,
+        17
+      ],
+      [
+        13,
+        6
+      ]
+    ]
+  },
+  "left_roi": {
+    "n": 78,
+    "positive": 4,
+    "negative": 74,
+    "status": "ok",
+    "f1": 0.0,
+    "balanced_accuracy": 0.4864864864864865,
+    "roc_auc": 0.3851351351351351,
+    "pr_auc": 0.04959047806176727,
+    "confusion_matrix": [
+      [
+        72,
+        2
+      ],
+      [
+        4,
+        0
+      ]
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+.home-page {
+  min-height: 100vh;
+  padding: 48px;
+  background: #f5f5f5;
+}
+
+.home-page__card {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.home-page__content {
+  width: 100%;
+}
+
+.home-page__header {
+  width: 100%;
+}
+
+.home-page__title {
+  margin-bottom: 8px !important;
+}
+
+/* ============================================================
+   Upload / IDLE
+   ============================================================ */
+
+.home-page__dragger {
+  width: 100%;
+}
+
+.home-page__upload-hint {
+  margin-top: 16px;
+}
+
+/* ============================================================
+   Uploading
+   ============================================================ */
+
+.home-page__upload-card {
+  text-align: center;
+}
+
+.home-page__upload-content {
+  width: 100%;
+}
+
+.home-page__loading-icon {
+  font-size: 48px;
+  color: #1677ff;
+}
+
+.home-page__progress {
+  width: 100%;
+}
+
+/* ============================================================
+   Success / Error
+   ============================================================ */
+
+.home-page__result-card {
+  width: 100%;
+}
+
+.home-page__error-alert {
+  margin-top: 24px;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .home-page {
+    padding: 24px 16px;
+  }
+
+  .home-page__card {
+    max-width: 100%;
+  }
+}

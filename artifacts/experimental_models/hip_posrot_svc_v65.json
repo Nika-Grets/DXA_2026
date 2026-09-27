@@ -1,0 +1,13 @@
+{
+  "model": "SVC RBF",
+  "C": 1,
+  "gamma": "scale",
+  "class_weight": "balanced",
+  "train_n": 115,
+  "train_positive": 25,
+  "study_level_group_cv": 5,
+  "oof_threshold": 0.12499999999999999,
+  "oof_f1": 0.373134328358209,
+  "oof_balanced_accuracy": 0.5333333333333333,
+  "status": "experimental_not_main_pipeline"
+}

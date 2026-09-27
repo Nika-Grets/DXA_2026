@@ -1,0 +1,77 @@
+{
+  "n": 150,
+  "positive": 7,
+  "features": [
+    "q60_sx",
+    "q60_occ",
+    "q70_sx",
+    "q70_occ",
+    "q80_sx",
+    "q80_occ",
+    "bbox_width",
+    "bbox_height",
+    "localizer_conf",
+    "shaft_score"
+  ],
+  "roc_auc": 0.7212787212787213,
+  "pr_auc": 0.13900459064482137,
+  "folds": [
+    {
+      "fold": 1,
+      "train_n": 120,
+      "valid_n": 30,
+      "valid_pos": 1,
+      "train_pos": 6
+    },
+    {
+      "fold": 2,
+      "train_n": 121,
+      "valid_n": 29,
+      "valid_pos": 2,
+      "train_pos": 5
+    },
+    {
+      "fold": 3,
+      "train_n": 120,
+      "valid_n": 30,
+      "valid_pos": 1,
+      "train_pos": 6
+    },
+    {
+      "fold": 4,
+      "train_n": 120,
+      "valid_n": 30,
+      "valid_pos": 1,
+      "train_pos": 6
+    },
+    {
+      "fold": 5,
+      "train_n": 119,
+      "valid_n": 31,
+      "valid_pos": 2,
+      "train_pos": 5
+    }
+  ],
+  "bootstrap_95ci": [
+    0.3891283524904214,
+    0.9211868118118117
+  ],
+  "comparisons": {
+    "q60_sx": {
+      "roc_auc": 0.8221778221778221,
+      "pr_auc": 0.3674708364043002
+    },
+    "q60_q70_sx": {
+      "roc_auc": 0.7912087912087912,
+      "pr_auc": 0.33218398040315844
+    },
+    "q60_spread_occ": {
+      "roc_auc": 0.8221778221778221,
+      "pr_auc": 0.3674708364043002
+    },
+    "q60_q70_q80_sx": {
+      "roc_auc": 0.7322677322677321,
+      "pr_auc": 0.27175117745279115
+    }
+  }
+}

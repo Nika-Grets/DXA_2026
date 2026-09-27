@@ -1,0 +1,27 @@
+services:
+  dexa-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - dexa_data:/app/data
+    restart: unless-stopped
+
+  dexa-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      dexa-backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  dexa_data:

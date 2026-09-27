@@ -1,0 +1,1727 @@
+[
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.12090510061110050103011205010113",
+    "label": 1,
+    "n": 11,
+    "current_index": 1,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 3,
+    "corrected_path": "CR000010.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 1.6072709697392672e-06,
+    "corrected_artifact": 0.9963628275513012,
+    "changed": true,
+    "single_spines": [
+      3,
+      5,
+      6
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.04071115100300090601031200020808",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0006603965047546194,
+    "corrected_artifact": 0.0006603965047546194,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.08111201111203050510020404121406",
+    "label": null,
+    "n": 1,
+    "current_index": null,
+    "current_path": null,
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "femur_left",
+    "current_artifact": null,
+    "corrected_artifact": 0.952760136365025,
+    "changed": true,
+    "single_spines": []
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.07141114011403010702060406101512",
+    "label": 1,
+    "n": 3,
+    "current_index": 1,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9936209450546277,
+    "corrected_artifact": 0.9936209450546277,
+    "changed": false,
+    "single_spines": [
+      1
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.07090507040208000106080811060202",
+    "label": 0,
+    "n": 12,
+    "current_index": 0,
+    "current_path": "CR000009.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000009.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0010616405962021926,
+    "corrected_artifact": 0.0010616405962021926,
+    "changed": false,
+    "single_spines": [
+      0,
+      7,
+      8
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.06041008131200110706010301000604",
+    "label": 0,
+    "n": 11,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 3,
+    "corrected_path": "CR000009.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0001529864413108725,
+    "corrected_artifact": 0.010945750564620533,
+    "changed": true,
+    "single_spines": [
+      3,
+      7,
+      9
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.04121102011402150303110508111305",
+    "label": 0,
+    "n": 13,
+    "current_index": 1,
+    "current_path": "CR000012.dcm",
+    "corrected_index": 5,
+    "corrected_path": "CR000003.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 4.887404226458933e-08,
+    "corrected_artifact": 0.00033275887915640696,
+    "changed": true,
+    "single_spines": [
+      5,
+      8,
+      12
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.04140410030403000101120807100701",
+    "label": 0,
+    "n": 6,
+    "current_index": 1,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.023481852154940978,
+    "corrected_artifact": 0.023481852154940978,
+    "changed": false,
+    "single_spines": [
+      1,
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.03010905090814080711141406121501",
+    "label": 1,
+    "n": 11,
+    "current_index": 1,
+    "current_path": "CR000009.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000009.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.996085042406264,
+    "corrected_artifact": 0.996085042406264,
+    "changed": false,
+    "single_spines": [
+      1,
+      2,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.14051001011001020103110813110612",
+    "label": 0,
+    "n": 6,
+    "current_index": 2,
+    "current_path": "CR000005.dcm",
+    "corrected_index": 3,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 4.57274267228246e-05,
+    "corrected_artifact": 0.0006826399805951949,
+    "changed": true,
+    "single_spines": [
+      3,
+      4
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.10140103050104100015110907140800",
+    "label": 0,
+    "n": 6,
+    "current_index": 1,
+    "current_path": "CR000004.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000004.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0040913581760014936,
+    "corrected_artifact": 0.0040913581760014936,
+    "changed": false,
+    "single_spines": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.00021509100701140314011205150113",
+    "label": 0,
+    "n": 6,
+    "current_index": 2,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 4.320367092195454e-05,
+    "corrected_artifact": 4.320367092195454e-05,
+    "changed": false,
+    "single_spines": [
+      2,
+      4
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.02100613110404001511060101141303",
+    "label": 0,
+    "n": 3,
+    "current_index": 1,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0026050544553473504,
+    "corrected_artifact": 0.0026050544553473504,
+    "changed": false,
+    "single_spines": [
+      1
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.01081208070113050704060608151002",
+    "label": 0,
+    "n": 3,
+    "current_index": 0,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0048302853380991825,
+    "corrected_artifact": 0.0048302853380991825,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.06031007110009040706001109051004",
+    "label": 1,
+    "n": 3,
+    "current_index": 0,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9991275028327199,
+    "corrected_artifact": 0.9991275028327199,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.08110703091310150605090907130304",
+    "label": 0,
+    "n": 6,
+    "current_index": 1,
+    "current_path": "CR000005.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000005.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.001814448253411042,
+    "corrected_artifact": 0.001814448253411042,
+    "changed": false,
+    "single_spines": [
+      1,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.00091501080806120506120114090107",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.02575461480859922,
+    "corrected_artifact": 0.02575461480859922,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.09061205050201001102041514000912",
+    "label": 1,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9930889276886963,
+    "corrected_artifact": 0.9930889276886963,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.01010712071105151008051412091100",
+    "label": 1,
+    "n": 3,
+    "current_index": 0,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9961264907474422,
+    "corrected_artifact": 0.9961264907474422,
+    "changed": false,
+    "single_spines": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.00011402030913150507081413120310",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0013647857949203564,
+    "corrected_artifact": 0.0013647857949203564,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.11031305020803120210110303010607",
+    "label": 0,
+    "n": 3,
+    "current_index": 1,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0013539513838175745,
+    "corrected_artifact": 0.0013539513838175745,
+    "changed": false,
+    "single_spines": [
+      0,
+      1
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.09020304121009030507130509070701",
+    "label": 0,
+    "n": 4,
+    "current_index": 2,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.001401268928138121,
+    "corrected_artifact": 0.001401268928138121,
+    "changed": false,
+    "single_spines": [
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.02060902040212120608040605100100",
+    "label": 0,
+    "n": 6,
+    "current_index": 2,
+    "current_path": "CR000004.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000004.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0023575537094849674,
+    "corrected_artifact": 0.0023575537094849674,
+    "changed": false,
+    "single_spines": [
+      0,
+      1,
+      2,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.02150001030902110114090106081007",
+    "label": 0,
+    "n": 3,
+    "current_index": 2,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.007240856993441581,
+    "corrected_artifact": 0.007240856993441581,
+    "changed": false,
+    "single_spines": [
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.12060501010302051215051203010600",
+    "label": 1,
+    "n": 2,
+    "current_index": 1,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9981480770125897,
+    "corrected_artifact": 0.9981480770125897,
+    "changed": false,
+    "single_spines": [
+      1
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.07040007120602101304050600010708",
+    "label": 0,
+    "n": 6,
+    "current_index": 0,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 4.390713524366018e-06,
+    "corrected_artifact": 4.390713524366018e-06,
+    "changed": false,
+    "single_spines": [
+      0,
+      2,
+      3,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.09110800100012120800030006041405",
+    "label": 0,
+    "n": 3,
+    "current_index": 0,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.018241983475736075,
+    "corrected_artifact": 0.018241983475736075,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.10030514041010111403040803061004",
+    "label": 1,
+    "n": 29,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9962219689267503,
+    "corrected_artifact": 0.9962219689267503,
+    "changed": false,
+    "single_spines": [
+      0,
+      1,
+      4,
+      6,
+      8,
+      13,
+      15,
+      17,
+      19,
+      25
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.00101409100812000205071213151011",
+    "label": 0,
+    "n": 6,
+    "current_index": 1,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 3,
+    "corrected_path": "CR000005.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 1.0787586001688263e-06,
+    "corrected_artifact": 0.031604238795135714,
+    "changed": true,
+    "single_spines": [
+      3,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.06111506140814121408000710091014",
+    "label": 0,
+    "n": 6,
+    "current_index": 0,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 8.963977643360838e-05,
+    "corrected_artifact": 8.963977643360838e-05,
+    "changed": false,
+    "single_spines": [
+      0,
+      1,
+      2,
+      4
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.01091501110815031100020500130014",
+    "label": 0,
+    "n": 4,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 3,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 1.813179566495694e-05,
+    "corrected_artifact": 0.006307068213159284,
+    "changed": true,
+    "single_spines": [
+      3
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.10110305110802141404051200020210",
+    "label": 0,
+    "n": 3,
+    "current_index": 2,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.007525503821653737,
+    "corrected_artifact": 0.007525503821653737,
+    "changed": false,
+    "single_spines": [
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.08130702060402020111101401090509",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0029579567409957364,
+    "corrected_artifact": 0.0029579567409957364,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.09001101031503060803041311070312",
+    "label": 0,
+    "n": 3,
+    "current_index": 1,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0025615469293912264,
+    "corrected_artifact": 0.0025615469293912264,
+    "changed": false,
+    "single_spines": [
+      1
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.09130409131001141403120204031509",
+    "label": 0,
+    "n": 3,
+    "current_index": 2,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.015399848962979763,
+    "corrected_artifact": 0.015399848962979763,
+    "changed": false,
+    "single_spines": [
+      0,
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.07060506150205030514061006111408",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0010795992505078073,
+    "corrected_artifact": 0.0010795992505078073,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.14030514000710060800130100011214",
+    "label": 1,
+    "n": 3,
+    "current_index": 2,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9919717041191823,
+    "corrected_artifact": 0.9919717041191823,
+    "changed": false,
+    "single_spines": [
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.11120509060313030005050308070506",
+    "label": 0,
+    "n": 12,
+    "current_index": 0,
+    "current_path": "CR000005.dcm",
+    "corrected_index": 6,
+    "corrected_path": "CR000003.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 1.0104845639829245e-09,
+    "corrected_artifact": 0.017831388435946453,
+    "changed": true,
+    "single_spines": [
+      6,
+      7,
+      10
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.11000715091405120315010100101510",
+    "label": 0,
+    "n": 11,
+    "current_index": 2,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.011087226473334783,
+    "corrected_artifact": 0.011087226473334783,
+    "changed": false,
+    "single_spines": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.00030206020209110205100406021412",
+    "label": 0,
+    "n": 3,
+    "current_index": 2,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0006772512978761902,
+    "corrected_artifact": 0.0006772512978761902,
+    "changed": false,
+    "single_spines": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.13011101150906100811130003020808",
+    "label": 0,
+    "n": 5,
+    "current_index": 0,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 3,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 1.1130985764541663e-07,
+    "corrected_artifact": 2.6825198670148757e-05,
+    "changed": true,
+    "single_spines": [
+      3,
+      4
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.13070707001109051012021502000705",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.00624080656723601,
+    "corrected_artifact": 0.00624080656723601,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.05000609021402010711070801100904",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.004540570912836852,
+    "corrected_artifact": 0.004540570912836852,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.15120712020613071211131414040509",
+    "label": 0,
+    "n": 11,
+    "current_index": 1,
+    "current_path": "CR000008.dcm",
+    "corrected_index": 3,
+    "corrected_path": "CR000009.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0014544003301036638,
+    "corrected_artifact": 0.0001169300651953259,
+    "changed": true,
+    "single_spines": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      9,
+      10
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.01011312130808040910091102031113",
+    "label": 0,
+    "n": 13,
+    "current_index": 2,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0016087227422157077,
+    "corrected_artifact": 0.0016087227422157077,
+    "changed": false,
+    "single_spines": [
+      2,
+      4,
+      12
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.09131504151204000006060612091203",
+    "label": 1,
+    "n": 3,
+    "current_index": 0,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9936827634573009,
+    "corrected_artifact": 0.9936827634573009,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.12090514001006040904030606011401",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0037625899206699767,
+    "corrected_artifact": 0.0037625899206699767,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.07060700030806121503030014110206",
+    "label": 0,
+    "n": 3,
+    "current_index": 1,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.00632034249210199,
+    "corrected_artifact": 0.00632034249210199,
+    "changed": false,
+    "single_spines": [
+      1
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.11011102050904000102020212011404",
+    "label": 0,
+    "n": 3,
+    "current_index": 2,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.00022127910264660783,
+    "corrected_artifact": 0.00022127910264660783,
+    "changed": false,
+    "single_spines": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.13101512050003031109001004060403",
+    "label": 1,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9922765307546889,
+    "corrected_artifact": 0.9922765307546889,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.04040806101100130101150009051415",
+    "label": 1,
+    "n": 12,
+    "current_index": 0,
+    "current_path": "CR000011.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000011.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9917058644523423,
+    "corrected_artifact": 0.9917058644523423,
+    "changed": false,
+    "single_spines": [
+      0,
+      2,
+      8
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.01021511080002000006040601030906",
+    "label": 1,
+    "n": 6,
+    "current_index": 2,
+    "current_path": "CR000003.dcm",
+    "corrected_index": 3,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.004901000524214109,
+    "corrected_artifact": 0.9936331390007679,
+    "changed": true,
+    "single_spines": [
+      0,
+      1,
+      3,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.11110412020614040803060513120911",
+    "label": 0,
+    "n": 6,
+    "current_index": 2,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0014006201720967529,
+    "corrected_artifact": 0.0014006201720967529,
+    "changed": false,
+    "single_spines": [
+      2,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.01101508090608101115020806060015",
+    "label": 0,
+    "n": 3,
+    "current_index": 0,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.005707489005741865,
+    "corrected_artifact": 0.005707489005741865,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.09131109110213080611001502040813",
+    "label": 0,
+    "n": 12,
+    "current_index": 2,
+    "current_path": "CR000011.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000011.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0007575611271346071,
+    "corrected_artifact": 0.0007575611271346071,
+    "changed": false,
+    "single_spines": [
+      2,
+      6,
+      11
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.04111012020210100809111310020901",
+    "label": 0,
+    "n": 6,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.008701120458429776,
+    "corrected_artifact": 0.008701120458429776,
+    "changed": false,
+    "single_spines": [
+      0,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.08010308000211020503020307091312",
+    "label": 0,
+    "n": 3,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.006491967003636663,
+    "corrected_artifact": 0.006491967003636663,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.01100712050309061210070903020211",
+    "label": 0,
+    "n": 6,
+    "current_index": 0,
+    "current_path": "CR000003.dcm",
+    "corrected_index": 4,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 2.5058143804120643e-24,
+    "corrected_artifact": 0.06770368722956306,
+    "changed": true,
+    "single_spines": [
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.02011400121411091003041007011307",
+    "label": 0,
+    "n": 2,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0005920978958293148,
+    "corrected_artifact": 0.0005920978958293148,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.04101108050208091310021407111214",
+    "label": 0,
+    "n": 3,
+    "current_index": 1,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0002628021308032091,
+    "corrected_artifact": 0.0002628021308032091,
+    "changed": false,
+    "single_spines": [
+      1
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.15060506051311040306151405130812",
+    "label": 0,
+    "n": 11,
+    "current_index": 2,
+    "current_path": "CR000004.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000004.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0020576877933449356,
+    "corrected_artifact": 0.0020576877933449356,
+    "changed": false,
+    "single_spines": [
+      2,
+      4,
+      8
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.07010502020008121005080211011503",
+    "label": 0,
+    "n": 6,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.014661476538954487,
+    "corrected_artifact": 0.014661476538954487,
+    "changed": false,
+    "single_spines": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.10000214070110110712041100051105",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0014873824273358208,
+    "corrected_artifact": 0.0014873824273358208,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.00020104100613061304040514090111",
+    "label": 0,
+    "n": 3,
+    "current_index": 1,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0014207097800963203,
+    "corrected_artifact": 0.0014207097800963203,
+    "changed": false,
+    "single_spines": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.08050709020911100006011108031308",
+    "label": 0,
+    "n": 3,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.020869240965449478,
+    "corrected_artifact": 0.020869240965449478,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.00140708141309070509131215090805",
+    "label": 0,
+    "n": 11,
+    "current_index": 0,
+    "current_path": "CR000009.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000009.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.001996770465941029,
+    "corrected_artifact": 0.001996770465941029,
+    "changed": false,
+    "single_spines": [
+      0,
+      1,
+      4,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.14030804041506011403100115131006",
+    "label": 0,
+    "n": 8,
+    "current_index": 0,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0024033495444686307,
+    "corrected_artifact": 0.0024033495444686307,
+    "changed": false,
+    "single_spines": [
+      0,
+      1,
+      2,
+      4,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.05080007010908151412021401130712",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.013141127876258034,
+    "corrected_artifact": 0.013141127876258034,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.11130601031507131510140912150209",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.01713437558445782,
+    "corrected_artifact": 0.01713437558445782,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.05091110020805070808081311010412",
+    "label": 0,
+    "n": 6,
+    "current_index": 1,
+    "current_path": "CR000004.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000004.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0011282820320954122,
+    "corrected_artifact": 0.0011282820320954122,
+    "changed": false,
+    "single_spines": [
+      1,
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.05011409090000061404080803060404",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.010106164765003638,
+    "corrected_artifact": 0.010106164765003638,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.12150004000513030900100606011509",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0004049936354714261,
+    "corrected_artifact": 0.0004049936354714261,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.06000805130607060714150602050114",
+    "label": 0,
+    "n": 6,
+    "current_index": 0,
+    "current_path": "CR000005.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000005.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.006032672600372399,
+    "corrected_artifact": 0.006032672600372399,
+    "changed": false,
+    "single_spines": [
+      0,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.14001106061015010402061009020003",
+    "label": 0,
+    "n": 3,
+    "current_index": 1,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.003920618768094702,
+    "corrected_artifact": 0.003920618768094702,
+    "changed": false,
+    "single_spines": [
+      0,
+      1
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.04030111120106061513080209011000",
+    "label": 0,
+    "n": 12,
+    "current_index": 0,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 4,
+    "corrected_path": "CR000011.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 2.3402866834587648e-07,
+    "corrected_artifact": 0.00662277816515798,
+    "changed": true,
+    "single_spines": [
+      4,
+      6,
+      8
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.02111204140006020215081404050209",
+    "label": 0,
+    "n": 2,
+    "current_index": 1,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.001160641056013612,
+    "corrected_artifact": 0.001160641056013612,
+    "changed": false,
+    "single_spines": [
+      0,
+      1
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.13060115000811100715140205030915",
+    "label": 0,
+    "n": 3,
+    "current_index": 2,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0019268621558109116,
+    "corrected_artifact": 0.0019268621558109116,
+    "changed": false,
+    "single_spines": [
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.07080911030405120513131308130103",
+    "label": 0,
+    "n": 3,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.008165565450086416,
+    "corrected_artifact": 0.008165565450086416,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.11130805080112021004150213051005",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.012569857028021781,
+    "corrected_artifact": 0.012569857028021781,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.04090607151301101110121009081500",
+    "label": 0,
+    "n": 6,
+    "current_index": 1,
+    "current_path": "CR000004.dcm",
+    "corrected_index": 4,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 5.699938665989355e-10,
+    "corrected_artifact": 0.018148562127270975,
+    "changed": true,
+    "single_spines": [
+      4,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.14150011111304110807130802031100",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.010310833113584513,
+    "corrected_artifact": 0.010310833113584513,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.15150900091406150103131401151205",
+    "label": 1,
+    "n": 6,
+    "current_index": 0,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000002.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9882408012231906,
+    "corrected_artifact": 0.9882408012231906,
+    "changed": false,
+    "single_spines": [
+      0,
+      1
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.04120502090713030002100002030500",
+    "label": 0,
+    "n": 3,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0007151472905274198,
+    "corrected_artifact": 0.0007151472905274198,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.11061310061408070513110011010800",
+    "label": 0,
+    "n": 6,
+    "current_index": 2,
+    "current_path": "CR000004.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000004.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0021388993318051212,
+    "corrected_artifact": 0.0021388993318051212,
+    "changed": false,
+    "single_spines": [
+      2,
+      4
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.13050309140908091510010214121510",
+    "label": 1,
+    "n": 2,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9931286419091664,
+    "corrected_artifact": 0.9931286419091664,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.02060202021413001406000512080208",
+    "label": 0,
+    "n": 3,
+    "current_index": 1,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 5.7785075909679716e-05,
+    "corrected_artifact": 5.7785075909679716e-05,
+    "changed": false,
+    "single_spines": [
+      1
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.08070600001410030512060707091212",
+    "label": 0,
+    "n": 11,
+    "current_index": 0,
+    "current_path": "CR000005.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000005.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.009803887132416865,
+    "corrected_artifact": 0.009803887132416865,
+    "changed": false,
+    "single_spines": [
+      0,
+      4,
+      8
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.15041203090015060404010507050405",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.010470530030734091,
+    "corrected_artifact": 0.010470530030734091,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.09090912081008051408101503020807",
+    "label": 0,
+    "n": 11,
+    "current_index": 1,
+    "current_path": "CR000008.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000008.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.010799816147568154,
+    "corrected_artifact": 0.010799816147568154,
+    "changed": false,
+    "single_spines": [
+      1,
+      6,
+      10
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.06051105050701010502031403141206",
+    "label": 0,
+    "n": 3,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.008649755948300466,
+    "corrected_artifact": 0.008649755948300466,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.01150001000900060703031302131108",
+    "label": 1,
+    "n": 6,
+    "current_index": 2,
+    "current_path": "CR000004.dcm",
+    "corrected_index": 2,
+    "corrected_path": "CR000004.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9907679473475004,
+    "corrected_artifact": 0.9907679473475004,
+    "changed": false,
+    "single_spines": [
+      2,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.02080810120709040103090703140106",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.004387180201961218,
+    "corrected_artifact": 0.004387180201961218,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.06000203070703071315151100081515",
+    "label": 0,
+    "n": 3,
+    "current_index": 1,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.003947743721286316,
+    "corrected_artifact": 0.003947743721286316,
+    "changed": false,
+    "single_spines": [
+      1,
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.07100203071411091300120005090303",
+    "label": 0,
+    "n": 12,
+    "current_index": 1,
+    "current_path": "CR000002.dcm",
+    "corrected_index": 6,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 2.144990592289917e-06,
+    "corrected_artifact": 0.0010082012946447591,
+    "changed": true,
+    "single_spines": [
+      6,
+      7,
+      8
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.02110607061101140709130908071405",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.006913774140212278,
+    "corrected_artifact": 0.006913774140212278,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.02001413040700010813000013120308",
+    "label": 0,
+    "n": 3,
+    "current_index": 1,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.0022138709632653626,
+    "corrected_artifact": 0.0022138709632653626,
+    "changed": false,
+    "single_spines": [
+      1
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.13000111030510001210030508000815",
+    "label": 1,
+    "n": 3,
+    "current_index": 0,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.9947212862280196,
+    "corrected_artifact": 0.9947212862280196,
+    "changed": false,
+    "single_spines": [
+      0,
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.07120201111314111500000602130205",
+    "label": 0,
+    "n": 6,
+    "current_index": 0,
+    "current_path": "CR000003.dcm",
+    "corrected_index": 3,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 2.3036879444377642e-08,
+    "corrected_artifact": 0.007336258171806469,
+    "changed": true,
+    "single_spines": [
+      0,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.06121310051313071012071011000214",
+    "label": 0,
+    "n": 6,
+    "current_index": 1,
+    "current_path": "CR000001.dcm",
+    "corrected_index": 1,
+    "corrected_path": "CR000001.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.002147311230329747,
+    "corrected_artifact": 0.002147311230329747,
+    "changed": false,
+    "single_spines": [
+      1,
+      2
+    ]
+  },
+  {
+    "study": "1.2.643.5.1.13.13.12.2.77.8252.04020303131005050903141411050509",
+    "label": 0,
+    "n": 1,
+    "current_index": 0,
+    "current_path": "CR000000.dcm",
+    "corrected_index": 0,
+    "corrected_path": "CR000000.dcm",
+    "corrected_region": "spine",
+    "current_artifact": 0.00020566316524821962,
+    "corrected_artifact": 0.00020566316524821962,
+    "changed": false,
+    "single_spines": [
+      0
+    ]
+  }
+]

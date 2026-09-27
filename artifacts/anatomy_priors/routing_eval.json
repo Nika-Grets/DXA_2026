@@ -1,0 +1,18 @@
+{
+  "scope": "supplied_100_study_dataset",
+  "method": "compare deterministic router output with region evidence from non-null criterion labels",
+  "study_count": 100,
+  "set_match_count": 98,
+  "set_match_fraction": 0.98,
+  "exceptions": [
+    {
+      "study": "2.25.11175860580562939441493697221497597640",
+      "note": "Right-hip image contains endoprosthesis; right-hip criterion labels are missing. Visual routing identifies the hip correctly."
+    },
+    {
+      "study": "2.25.12798473087614376830819854616447908612",
+      "note": "Both hip images contain endoprostheses; hip criterion labels are missing. Visual routing identifies the hips correctly."
+    }
+  ],
+  "interpretation": "The 98/100 figure is only a sanity check because missing criterion labels generally indicate an unperformed region, but the expert Q&A documents anomalies where hip images exist despite missing hip labels. Therefore 98% is not a formal routing accuracy metric."
+}

@@ -1,0 +1,587 @@
+"""Transparent DXA MVP baseline.
+
+The module is intentionally deterministic and explainable. It is a routing/quality
+baseline, not a clinically validated model. Criterion-level terminology is isolated
+from the image logic so the organiser's final dictionary can be applied later.
+"""
+from __future__ import annotations
+
+from dataclasses import dataclass
+from math import atan, degrees
+import hashlib
+
+import numpy as np
+
+from app.ml.profile import PIXEL_X_MM, PIXEL_Y_MM, is_expected_device
+from app.core.config import get_settings
+from app.terminology import term_name
+
+REGIONS = ("spine", "femur_right", "femur_left", "unknown")
+
+# Optional fitted benchmark heads. They are used only when present; the deterministic
+# geometry remains the fallback so deployment does not depend on serialized weights.
+_MODEL_CACHE = None
+
+# Only this benchmark head has leakage-safe OOF evidence strong enough for the
+# current MVP production decision path.  The other heads remain available behind
+# ENABLE_EXPERIMENTAL_BENCHMARK_HEADS for controlled experiments only.
+PRODUCTION_BENCHMARK_HEADS = ("right_posrot",)
+ALL_BENCHMARK_HEADS = (
+    "spine_position", "spine_axis", "spine_artifact",
+    "right_posrot", "right_roi", "left_posrot", "left_roi",
+)
+
+def _load_benchmark_models():
+    global _MODEL_CACHE
+    if _MODEL_CACHE is not None:
+        return _MODEL_CACHE
+    try:
+        import joblib
+        from pathlib import Path
+        root = Path(__file__).resolve().parents[3]
+        model_dir = root / "artifacts" / "models"
+        names = ALL_BENCHMARK_HEADS if get_settings().enable_experimental_benchmark_heads else PRODUCTION_BENCHMARK_HEADS
+        _MODEL_CACHE = {n: joblib.load(model_dir / f"{n}.joblib")
+                        for n in names if (model_dir / f"{n}.joblib").exists()}
+    except Exception:
+        _MODEL_CACHE = {}
+    return _MODEL_CACHE
+
+_QUALITY_MODEL_CACHE = None
+_QUALITY_CALIBRATORS = None
+
+def _load_quality_models():
+    """Load fitted criterion models for score/probability reporting only."""
+    global _QUALITY_MODEL_CACHE
+    if _QUALITY_MODEL_CACHE is not None:
+        return _QUALITY_MODEL_CACHE
+    try:
+        import joblib
+        from pathlib import Path
+        root = Path(__file__).resolve().parents[3]
+        model_dir = root / "artifacts" / "models"
+        names = ("spine_position", "spine_axis", "spine_artifact", "right_posrot", "right_roi", "left_posrot", "left_roi")
+        _QUALITY_MODEL_CACHE = {n: joblib.load(model_dir / f"{n}.joblib") for n in names if (model_dir / f"{n}.joblib").exists()}
+    except Exception:
+        _QUALITY_MODEL_CACHE = {}
+    return _QUALITY_MODEL_CACHE
+
+def _load_quality_calibrators():
+    """Load only calibration maps supported by leakage-safe OOF evidence."""
+    global _QUALITY_CALIBRATORS
+    if _QUALITY_CALIBRATORS is not None:
+        return _QUALITY_CALIBRATORS
+    try:
+        import json
+        from pathlib import Path
+        root = Path(__file__).resolve().parents[3]
+        path = root / "artifacts" / "models" / "quality_calibrators.json"
+        data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+        _QUALITY_CALIBRATORS = {k: v for k, v in data.items() if v.get("enabled")}
+    except Exception:
+        _QUALITY_CALIBRATORS = {}
+    return _QUALITY_CALIBRATORS
+
+def _quality_probabilities(image: np.ndarray, region: str) -> list[float]:
+    if region == "spine": names = ("spine_position", "spine_axis", "spine_artifact")
+    elif region == "femur_right": names = ("right_posrot", "right_roi")
+    elif region == "femur_left": names = ("left_posrot", "left_roi")
+    else: return []
+    models = _load_quality_models(); feat = _benchmark_features(image); values = []
+    for name in names:
+        model = models.get(name)
+        if model is None: continue
+        try:
+            p = float(np.clip(model.predict_proba(feat)[0, 1], 1e-6, 1.0 - 1e-6))
+            cal = _load_quality_calibrators().get(name)
+            if cal is not None:
+                logit = float(np.log(p / (1.0 - p)))
+                p = float(1.0 / (1.0 + np.exp(-(float(cal["coef"]) * logit + float(cal["intercept"])))) )
+            values.append(float(np.clip(p, 0.0, 1.0)))
+        except Exception: continue
+    return values
+
+def _benchmark_features(image: np.ndarray) -> np.ndarray:
+    """Keep inference features byte-compatible with the classical benchmark."""
+    x = _normalize(image); h, w = x.shape
+    yy = np.linspace(0, h - 1, 32).astype(int); xx = np.linspace(0, w - 1, 32).astype(int)
+    z = x[np.ix_(yy, xx)]
+    row = (x > 0.5).mean(axis=1); col = (x > 0.5).mean(axis=0)
+    rb = np.array([row[int(i*h/16):max(int((i+1)*h/16), int(i*h/16)+1)].mean() for i in range(16)])
+    cb = np.array([col[int(i*w/16):max(int((i+1)*w/16), int(i*w/16)+1)].mean() for i in range(16)])
+    weights = np.clip(x - .5, 0, 1); den = weights.sum() + 1e-8
+    xs = np.arange(w)[None, :]; ys = np.arange(h)[:, None]
+    cx = float((weights*xs).sum()/den/w); cy = float((weights*ys).sum()/den/h)
+    sym = _safe_corr(x, np.fliplr(x))
+    top = row[:max(1, h//5)].mean(); bot = row[-max(1, h//5):].mean(); ratio = top/(bot+1e-6)
+    centers=[]; ycent=[]
+    for c in np.linspace(.1,.9,9):
+        y0=max(0,int((c-.05)*h)); y1=min(h,max(y0+1,int((c+.05)*h)))
+        b=weights[y0:y1]; d=b.sum()
+        if d>1: centers.append(float((b*xs).sum()/d/w)); ycent.append(c)
+    angle=0.0
+    if len(centers)>=3: angle=abs(degrees(atan(float(np.polyfit(ycent,centers,1)[0]))))
+    topw=weights[:max(1,int(.35*h))]; botw=weights[int(.55*h):]
+    sx=float((topw*xs).sum()/(topw.sum()+1e-8)/w - (botw*xs).sum()/(botw.sum()+1e-8)/w)
+    grad=np.abs(np.diff(x,axis=0)).mean()+np.abs(np.diff(x,axis=1)).mean()
+    stats=np.array([cx,cy,sym,ratio,angle,sx,grad,float(x.mean()),float(x.std()),float((x>.97).mean())],dtype=np.float32)
+    return np.concatenate([z.ravel(),rb,cb,stats]).reshape(1,-1)
+
+def _criterion_prob(image: np.ndarray, criterion: str) -> float | None:
+    model = _load_benchmark_models().get(criterion)
+    if model is None:
+        return None
+    try:
+        return float(model.predict_proba(_benchmark_features(image))[0,1])
+    except Exception:
+        return None
+
+
+def _normalize(image: np.ndarray) -> np.ndarray:
+    x = np.asarray(image, dtype=np.float32)
+    finite = x[np.isfinite(x)]
+    if finite.size == 0:
+        return np.zeros_like(x, dtype=np.float32)
+    low, high = np.percentile(finite, [1, 99])
+    if high <= low:
+        return np.zeros_like(x, dtype=np.float32)
+    return np.clip((x - low) / (high - low), 0.0, 1.0)
+
+
+def _crop_black_edge_mask(x: np.ndarray) -> np.ndarray:
+    """Return a central analysis mask, suppressing border anonymisation blocks."""
+    h, w = x.shape[:2]
+    mask = np.ones((h, w), dtype=bool)
+    # The Lunar export can contain solid black anonymisation blocks at hip-image edges.
+    # Ignore only persistent near-black border runs; do not remove anatomical pixels inside.
+    for side in ("left", "right"):
+        for frac in np.linspace(0.0, 0.18, 10):
+            width = max(1, int(w * (frac + 0.02)))
+            band = x[:, :width] if side == "left" else x[:, w - width:]
+            if float(np.mean(band < 0.01)) > 0.985:
+                if side == "left":
+                    mask[:, :width] = False
+                else:
+                    mask[:, w - width:] = False
+                break
+    return mask
+
+
+def _safe_corr(a: np.ndarray, b: np.ndarray) -> float:
+    av, bv = a.ravel(), b.ravel()
+    if av.size < 2 or float(av.std()) < 1e-7 or float(bv.std()) < 1e-7:
+        return 0.0
+    value = float(np.corrcoef(av, bv)[0, 1])
+    return value if np.isfinite(value) else 0.0
+
+
+def _centroid_x(image: np.ndarray, y0: int, y1: int) -> float:
+    x = image[y0:y1]
+    weights = np.clip(x - 0.5, 0.0, 1.0)
+    denominator = float(weights.sum())
+    if denominator <= 1e-7:
+        return 0.5
+    columns = np.arange(x.shape[1], dtype=np.float32)[None, :]
+    return float((weights * columns).sum() / denominator / x.shape[1])
+
+
+def fixed_top_bottom_ratio(image: np.ndarray) -> float:
+    x = _normalize(image)
+    h = x.shape[0]
+    k = max(1, h // 5)
+    mask = x > 0.5
+    row_density = mask.mean(axis=1)
+    return float(row_density[:k].mean() / (row_density[-k:].mean() + 1e-6))
+
+
+def side_shift(image: np.ndarray) -> float:
+    x = _normalize(image)
+    h = x.shape[0]
+    return _centroid_x(x, 0, max(1, int(h * 0.35))) - _centroid_x(x, int(h * 0.55), h)
+
+
+def spine_axis_degrees(image: np.ndarray) -> float:
+    x = _normalize(image)
+    h = x.shape[0]
+    weights = np.clip(x - 0.55, 0.0, 1.0)
+    centers: list[float] = []
+    ys: list[float] = []
+    for center in np.linspace(0.1, 0.9, 9):
+        y0 = max(0, int((center - 0.05) * h))
+        y1 = min(h, max(y0 + 1, int((center + 0.05) * h)))
+        band = weights[y0:y1]
+        den = float(band.sum())
+        if den > 1.0:
+            columns = np.arange(x.shape[1], dtype=np.float32)[None, :]
+            centers.append(float((band * columns).sum() / den / x.shape[1]))
+            ys.append(center)
+    if len(centers) < 3:
+        return 90.0
+    slope = float(np.polyfit(np.asarray(ys), np.asarray(centers), 1)[0])
+    return abs(degrees(atan(slope)))
+
+
+def symmetry(image: np.ndarray) -> float:
+    x = _normalize(image)
+    return _safe_corr(x, np.fliplr(x))
+
+
+def bbox_stats(image: np.ndarray) -> tuple[float, float, float, float]:
+    x = _normalize(image)
+    analysis_mask = _crop_black_edge_mask(x)
+    mask = (x > 0.55) & analysis_mask
+    ys, xs = np.nonzero(mask)
+    h, w = x.shape
+    if len(xs) < 10:
+        return 0.5, 0.5, 0.0, 0.0
+    return (
+        float(xs.mean() / w),
+        float(ys.mean() / h),
+        float((xs.max() - xs.min() + 1) / w),
+        float((ys.max() - ys.min() + 1) / h),
+    )
+
+
+@dataclass(frozen=True, slots=True)
+class RegionPrediction:
+    region: str
+    confidence: float
+    symmetry: float
+    ratio: float
+    side_shift: float
+    image_index: int = 0
+
+
+def classify_study(images: list[np.ndarray]) -> list[RegionPrediction]:
+    if not images:
+        return []
+    if len(images) > 3:
+        images = images[:3]
+    sym = [symmetry(image) for image in images]
+    ratios = [fixed_top_bottom_ratio(image) for image in images]
+    shifts = [side_shift(image) for image in images]
+
+    if len(images) == 1:
+        if ratios[0] < 1.25 or (sym[0] > 0.20 and abs(shifts[0]) < 0.20):
+            return [RegionPrediction("spine", 0.78, sym[0], ratios[0], shifts[0], 0)]
+        if abs(shifts[0]) < 0.02:
+            return [RegionPrediction("unknown", 0.45, sym[0], ratios[0], shifts[0], 0)]
+        region = "femur_right" if shifts[0] >= 0 else "femur_left"
+        return [RegionPrediction(region, min(0.88, 0.55 + min(abs(shifts[0]), 0.40)), sym[0], ratios[0], shifts[0], 0)]
+
+    # A two-image study is valid in the organiser data: it can contain two hips
+    # without a spine image.  The previous implementation fell through to the
+    # legacy multi-image fallback, which *always* forced one of the two images
+    # to spine.  First classify each image independently, then resolve the study
+    # composition.  Opposite lateral shifts are the characteristic left/right
+    # hip pair; a single spine + hip pair is also preserved as such.
+    if len(images) == 2:
+        singles = [classify_study([image])[0] for image in images]
+        regions = [p.region for p in singles]
+        if set(regions) == {"femur_left", "femur_right"}:
+            return [
+                RegionPrediction(item.region, item.confidence, item.symmetry, item.ratio, item.side_shift, i)
+                for i, item in enumerate(singles)
+            ]
+        if all(region.startswith("femur_") for region in regions) and shifts[0] * shifts[1] < -0.0025:
+            ordered = sorted(range(2), key=lambda i: shifts[i])
+            return [
+                RegionPrediction("femur_left", singles[ordered[0]].confidence, sym[ordered[0]], ratios[ordered[0]], shifts[ordered[0]], ordered[0]),
+                RegionPrediction("femur_right", singles[ordered[-1]].confidence, sym[ordered[-1]], ratios[ordered[-1]], shifts[ordered[-1]], ordered[-1]),
+            ]
+        if regions.count("spine") == 1:
+            spine_i = regions.index("spine")
+            other_i = 1 - spine_i
+            if abs(shifts[other_i]) >= 0.22 and abs(shifts[spine_i]) < 0.12:
+                hip_region = "femur_right" if shifts[other_i] > 0 else "femur_left"
+                return [
+                    RegionPrediction("spine", singles[spine_i].confidence, sym[spine_i], ratios[spine_i], shifts[spine_i], spine_i),
+                    RegionPrediction(hip_region, singles[other_i].confidence, sym[other_i], ratios[other_i], shifts[other_i], other_i),
+                ]
+            return [
+                RegionPrediction(item.region, item.confidence, item.symmetry, item.ratio, item.side_shift, i)
+                for i, item in enumerate(singles)
+            ]
+        if regions.count("spine") == 2:
+            # A valid spine+single-hip pair can be miscalled as two spines by the
+            # single-image heuristic because hip images may also have a low global
+            # top/bottom ratio. A strong unilateral shift is the safer composition cue.
+            hip_i = int(np.argmax(np.abs(np.asarray(shifts))))
+            spine_i = 1 - hip_i
+            if abs(shifts[hip_i]) >= 0.22 and abs(shifts[spine_i]) < 0.12:
+                hip_region = "femur_right" if shifts[hip_i] > 0 else "femur_left"
+                return [
+                    RegionPrediction("spine", singles[spine_i].confidence, sym[spine_i], ratios[spine_i], shifts[spine_i], spine_i),
+                    RegionPrediction(hip_region, singles[hip_i].confidence, sym[hip_i], ratios[hip_i], shifts[hip_i], hip_i),
+                ]
+        # If both independent routes are ambiguous, keep the composition
+        # conservative rather than inventing a spine image.
+        return [
+            RegionPrediction(item.region, item.confidence, item.symmetry, item.ratio, item.side_shift, i)
+            for i, item in enumerate(singles)
+        ]
+
+    # In the standard 3-image DXA study, the spine image is the one whose
+    # superior-vs-inferior mass shift is closest to zero; the two hips sit on
+    # opposite sides. This is substantially more anatomically specific than
+    # selecting the minimum top/bottom ratio. Fall back to the legacy route if
+    # the expected left/right separation is absent.
+    if len(images) == 3:
+        ordered = sorted(range(3), key=lambda i: shifts[i])
+        spine_idx = min(range(3), key=lambda i: abs(shifts[i]))
+        left_idx, right_idx = ordered[0], ordered[-1]
+        if left_idx != right_idx and shifts[left_idx] < -0.05 and shifts[right_idx] > 0.05:
+            margin = sorted(abs(v) for v in shifts)[1] - min(abs(v) for v in shifts)
+            spine_conf = float(np.clip(0.72 + margin / 0.20, 0.72, 0.94))
+            return [
+                RegionPrediction("spine", spine_conf, sym[spine_idx], ratios[spine_idx], shifts[spine_idx], spine_idx),
+                RegionPrediction("femur_left", 0.88, sym[left_idx], ratios[left_idx], shifts[left_idx], left_idx),
+                RegionPrediction("femur_right", 0.88, sym[right_idx], ratios[right_idx], shifts[right_idx], right_idx),
+            ]
+
+    spine_idx = int(np.argmin(np.asarray(ratios)))
+    predictions = [RegionPrediction("spine", 0.78, sym[spine_idx], ratios[spine_idx], shifts[spine_idx], spine_idx)]
+    others = [i for i in range(len(images)) if i != spine_idx]
+    for i in others:
+        region = "femur_right" if shifts[i] >= 0 else "femur_left"
+        predictions.append(RegionPrediction(region, 0.55, sym[i], ratios[i], shifts[i], i))
+    femurs = [p for p in predictions if p.region.startswith("femur_")]
+    if len(femurs) == 2 and femurs[0].region == femurs[1].region:
+        ordered = sorted(others, key=lambda i: shifts[i])
+        predictions = [predictions[0], RegionPrediction("femur_left", 0.50, sym[ordered[0]], ratios[ordered[0]], shifts[ordered[0]], ordered[0]), RegionPrediction("femur_right", 0.50, sym[ordered[-1]], ratios[ordered[-1]], shifts[ordered[-1]], ordered[-1])]
+    return predictions
+
+
+def _physical_distance(px_x: float, px_y: float) -> float:
+    return float(np.hypot(px_x * PIXEL_X_MM, px_y * PIXEL_Y_MM))
+
+
+def evaluate_quality(image: np.ndarray, region: str, metadata: dict | None = None) -> tuple[str, float, list[str], list[str]]:
+    """Evaluate criteria using the stable anatomy localizers plus conservative geometry.
+
+    The localizers are deliberately used as *candidate anatomy* rather than as a
+    learned clinical model.  Criterion decisions remain explainable and use the
+    organiser's physical spacing constants where the specification is expressed in mm.
+    """
+    x = _normalize(image)
+    if not np.isfinite(x).all() or x.size == 0 or float(x.std()) < 1e-7:
+        return "issue_detected", 0.99, ["INVALID_IMAGE"], []
+    if metadata and not is_expected_device(metadata):
+        return "issue_detected", 0.99, ["NON_DXA_ANATOMY"], []
+
+    cx, cy, bw, bh = bbox_stats(x)
+    violations: list[str] = []
+    findings: list[str] = []
+    scores: list[float] = []
+
+    if region == "spine":
+        # Use the anatomy localizer in production.  In particular, the 5-degree
+        # criterion is evaluated in physical image coordinates, not raw pixels.
+        from app.ml.spine_localizer import localize_spine
+        loc = localize_spine(x)
+        angle = loc.axis_degrees_physical
+        p_axis = _criterion_prob(x, "spine_axis")
+        p_pos = _criterion_prob(x, "spine_position")
+        p_art = _criterion_prob(x, "spine_artifact")
+
+        position_issue = (
+            loc.confidence < 0.25
+            or loc.bbox[2] < 0.20
+            or loc.bbox[3] < 0.70
+            or abs((loc.bbox[0] + loc.bbox[2] / 2.0) - 0.5) > 0.20
+        )
+        if angle > 5.0 or (p_axis is not None and p_axis >= 0.50):
+            violations.append("SPINE_AXIS")
+            scores.append(max(min(angle / 10.0, 1.0), p_axis or 0.0))
+        if position_issue or (p_pos is not None and p_pos >= 0.50):
+            violations.append("SPINE_POSITION")
+            scores.append(max(0.65 if position_issue else 0.0, p_pos or 0.0))
+        # The benchmark head remains opt-in.  Do not silently promote an
+        # unvalidated serialized model into the default production decision path.
+        if p_art is not None and p_art >= 0.50:
+            violations.append("SPINE_ARTIFACT")
+            scores.append(p_art)
+        if symmetry(x) < 0.20 and angle > 5.0:
+            findings.append("SCOLIOSIS")
+        if loc.confidence < 0.25:
+            scores.append(0.60)
+
+    elif region in {"femur_right", "femur_left"}:
+        from app.ml.hip_localizer import localize_hip
+        side = "right" if region == "femur_right" else "left"
+        loc = localize_hip(x, side=side)
+        shift = abs(side_shift(x))
+        prefix = "right" if side == "right" else "left"
+        p_pos = _criterion_prob(x, f"{prefix}_posrot")
+
+        # Hip position/rotation keeps the old whole-image guardrails, but now also
+        # requires a plausible proximal-femur candidate when the localizer has
+        # sufficient confidence. A very low-confidence localizer is itself a
+        # conservative position/rotation failure rather than silently accepting
+        # an unlocalized hip.
+        localizer_issue = loc.confidence < 0.20
+        if (
+            localizer_issue
+            or bw < 0.25
+            or bh < 0.65
+            or abs(cx - 0.5) > 0.28
+            or (p_pos is not None and p_pos >= 0.50)
+        ):
+            violations.append("HIP_POSITION_ROTATION")
+            scores.append(max(0.70 if localizer_issue else 0.0, p_pos or 0.0))
+
+        # TЗ ROI margins are physical distances from the candidate anatomical area
+        # to the image borders: >=20 mm toward the relevant lateral edge and >=30 mm
+        # superior/inferior. Do not replace this with a fixed pixel padding.
+        left_mm, top_mm, right_mm, bottom_mm = loc.physical_margin_mm
+        lateral_mm = right_mm if side == "right" else left_mm
+        roi_issue = (
+            loc.confidence < 0.20
+            or lateral_mm < 20.0
+            or top_mm < 30.0
+            or bottom_mm < 30.0
+        )
+        if roi_issue:
+            violations.append("HIP_ROI")
+            margin_deficits = [
+                max(0.0, 20.0 - lateral_mm) / 20.0,
+                max(0.0, 30.0 - top_mm) / 30.0,
+                max(0.0, 30.0 - bottom_mm) / 30.0,
+            ]
+            scores.append(float(np.clip(max(margin_deficits + ([1.0] if loc.confidence < 0.20 else [])), 0.55, 1.0)))
+
+        central = x[int(x.shape[0] * 0.20):int(x.shape[0] * 0.90)]
+        if float((central > 0.97).mean()) > 0.025:
+            findings.append("ENDOPROSTHESIS")
+        if shift < 0.015:
+            violations.append("HIP_POSITION_ROTATION")
+            scores.append(0.45)
+
+    else:
+        violations.append("NON_DXA_ANATOMY")
+        scores.append(0.95)
+
+    violations = list(dict.fromkeys(violations))
+    findings = list(dict.fromkeys(findings))
+    confidence = max(scores, default=0.55)
+    return ("issue_detected" if violations else "acceptable"), float(confidence), violations, findings
+
+REGION_OUTPUT = {
+    "spine": "Поясничный отдел позвоночника",
+    "femur_right": "Проксимальный отдел бедра",
+    "femur_left": "Проксимальный отдел бедра",
+}
+
+class DexaBaselineAdapter:
+    """Study-aware deterministic adapter used until trained weights are available."""
+
+    MODEL_NAME = "dexa-baseline"
+    MODEL_VERSION = "1.6.2-v68.5"
+
+    def predict_study(self, images):
+        from app.schemas.prediction import Defect, ImagePrediction, ModelInfo, ModelPrediction
+        from uuid import UUID
+
+        # Deduplicate computation, not output: every original DICOM must receive
+        # a result row, while pixel-identical duplicates reuse the same prediction.
+        unique = []
+        groups = []
+        seen = {}
+        for image_id, pixels, metadata in images:
+            key = hashlib.md5(np.ascontiguousarray(pixels).tobytes()).hexdigest()
+            idx = seen.get(key)
+            if idx is None:
+                idx = len(unique)
+                seen[key] = idx
+                unique.append((image_id, pixels, metadata))
+            groups.append(idx)
+        routed = classify_study([x[1] for x in unique])
+        route_by_index = {route.image_index: route for route in routed}
+        results = []
+        defects = []
+        cached = []
+        for unique_index, (image_id, pixels, metadata) in enumerate(unique):
+            route = route_by_index.get(unique_index)
+            if route is None:
+                raise ValueError(f"missing anatomical route for image index {unique_index}")
+            if route.region == "unknown":
+                raise ValueError("anatomical region could not be determined")
+            status, confidence, violations, findings = evaluate_quality(pixels, route.region, metadata)
+            score = 1.0 - confidence if status == "issue_detected" else confidence
+            deterministic_risk = float(np.clip(confidence if status == "issue_detected" else 0.0, 0.0, 1.0))
+            model_risks = _quality_probabilities(pixels, route.region)
+            quality_prob = float(np.clip(max([deterministic_risk, *model_risks]), 0.0, 1.0))
+            # Candidate anatomy geometry is exposed for visualization only.
+            # It is explicitly not a defect mask/segmentation.
+            from app.schemas.prediction import AnatomyLocalization, BBoxROI
+            anatomy_localization = None
+            if route.region == "spine":
+                from app.ml.spine_localizer import localize_spine
+                sloc = localize_spine(pixels)
+                anatomy_localization = AnatomyLocalization(
+                    bbox=BBoxROI(x=sloc.bbox[0], y=sloc.bbox[1], width=sloc.bbox[2], height=sloc.bbox[3]),
+                    centerline=list(sloc.centerline),
+                    confidence=sloc.confidence,
+                    axis_degrees_physical=sloc.axis_degrees_physical,
+                )
+            elif route.region in {"femur_right", "femur_left"}:
+                from app.ml.hip_localizer import localize_hip
+                side = "right" if route.region == "femur_right" else "left"
+                hloc = localize_hip(pixels, side=side)
+                anatomy_localization = AnatomyLocalization(
+                    bbox=BBoxROI(x=hloc.bone_bbox[0], y=hloc.bone_bbox[1], width=hloc.bone_bbox[2], height=hloc.bone_bbox[3]),
+                    shaft_bbox=BBoxROI(x=hloc.shaft_bbox[0], y=hloc.shaft_bbox[1], width=hloc.shaft_bbox[2], height=hloc.shaft_bbox[3]),
+                    confidence=hloc.confidence,
+                    side=side,
+                    physical_margin_mm=hloc.physical_margin_mm,
+                )
+            result = ImagePrediction(
+                image_id=image_id,
+                study_uid=metadata.get("StudyInstanceUID") or None,
+                image_uid=metadata.get("SOPInstanceUID") or None,
+                anatomical_region=REGION_OUTPUT.get(route.region, "Проксимальный отдел бедра"),
+                quality_class=1 if status == "issue_detected" else 0,
+                quality_score=score,
+                confidence=confidence,
+                quality_prob=quality_prob,
+                violation_type=[term_name(code) for code in violations if code in {"SPINE_POSITION","SPINE_AXIS","SPINE_ARTIFACT","HIP_POSITION_ROTATION","HIP_ROI"}],
+                findings=[term_name(code) for code in findings],
+                processing_status="success",
+                anatomy_localization=anatomy_localization,
+            )
+            cached.append((route, result, violations, findings))
+            for code in [*violations, *findings]:
+                defects.append(Defect(
+                    type=code,
+                    label=term_name(code),
+                    confidence=confidence,
+                    image_id=image_id,
+                    roi={"type": "bbox", "x": 0.0, "y": 0.0, "width": 1.0, "height": 1.0},
+                ))
+        # Expand cached predictions back to all source images, preserving image IDs.
+        if len(groups) != len(unique):
+            expanded = []
+            for original_idx, group_idx in enumerate(groups):
+                original_id, _, original_metadata = images[original_idx]
+                _, cached_result, _, _ = cached[group_idx]
+                expanded.append(cached_result.model_copy(update={
+                    "image_id": original_id,
+                    "study_uid": original_metadata.get("StudyInstanceUID") or None,
+                    "image_uid": original_metadata.get("SOPInstanceUID") or None,
+                }))
+            results = expanded
+        else:
+            results = [x[1] for x in cached]
+
+        has_issue = any(x.quality_class == 1 for x in results)
+        scores = [x.quality_score for x in results if x.quality_score is not None]
+        return ModelPrediction(
+            quality_status="issue_detected" if has_issue else "acceptable",
+            quality_score=min(scores) if scores else None,
+            defects=defects,
+            model=ModelInfo(name=self.MODEL_NAME, version=self.MODEL_VERSION),
+            results=results,
+        )
+
+    def predict(self, image: np.ndarray, *, image_id, metadata: dict):
+        return self.predict_study([(image_id, image, metadata)])

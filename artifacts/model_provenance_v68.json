@@ -1,0 +1,59 @@
+{
+  "version": "V6.8",
+  "model_version": "1.6.0-v68",
+  "cv": {
+    "method": "StratifiedGroupKFold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 42,
+    "group_key": "StudyInstanceUID"
+  },
+  "labels": "criterion-level; missing labels excluded per criterion",
+  "final_fit": "all labelled criterion samples after OOF evaluation",
+  "python": "3.13.5",
+  "sklearn": "1.8.0",
+  "joblib": "1.5.3",
+  "sha256": {
+    "artifacts/canonical_manifest.json": "0e871063cb81111bd52bbc32430ced17373e8a5f69569db54fcd60ea613275aa",
+    "artifacts/v68_oof_benchmark.py": "1fe572541c95831ed3988eb5b908a4123290a16c91ecbb14a80df46c38924c61",
+    "artifacts/v68_oof_bootstrap.py": "db343e6301ffe10b8d37418b7e5d6e0d4963e54a0e2bf12084b8e47695b034ae",
+    "docs/ML_BASELINE_RESULTS.md": "0176229426220a0ec444760a0a84e146c9611f23175a9f398b51a07662d64698"
+  },
+  "models": {
+    "spine_position": {
+      "path": "artifacts/models/spine_position.joblib",
+      "sha256": "9431483a61a4e2636146ccce7ad66d7fbe870ed4dc67a89ce725a124c425a468",
+      "size_bytes": 35473
+    },
+    "spine_axis": {
+      "path": "artifacts/models/spine_axis.joblib",
+      "sha256": "e51aede4e140797b3381c61b87e2040461e816993a1335d6965be3146ad65ee6",
+      "size_bytes": 35473
+    },
+    "spine_artifact": {
+      "path": "artifacts/models/spine_artifact.joblib",
+      "sha256": "625cc541343903ea3bc001578f36a6fb9445600fe7a8ec4736724d83d6bc6f68",
+      "size_bytes": 35473
+    },
+    "right_posrot": {
+      "path": "artifacts/models/right_posrot.joblib",
+      "sha256": "7d838e16a4f328e1a30a720011cb0ba89fde3f717b96413b69e43c4dfa2bc470",
+      "size_bytes": 35473
+    },
+    "right_roi": {
+      "path": "artifacts/models/right_roi.joblib",
+      "sha256": "3e72093808ffc41aef6519086ce4d95092f64218e6f11e7c31c3e9c99a6cfbcb",
+      "size_bytes": 35473
+    },
+    "left_posrot": {
+      "path": "artifacts/models/left_posrot.joblib",
+      "sha256": "5e50dbad8acde5f9277bb02f68ed31dd1af18239ab65d6326c1e04d5840df5d5",
+      "size_bytes": 35473
+    },
+    "left_roi": {
+      "path": "artifacts/models/left_roi.joblib",
+      "sha256": "9ea53ac69bfded142361cb9efa9a025b35b2343665bd65d9c01001b42daafca7",
+      "size_bytes": 35473
+    }
+  }
+}

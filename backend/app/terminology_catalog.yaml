@@ -1,0 +1,35 @@
+version: "official_clarification_v2"
+violations:
+  SPINE_POSITION:
+    display_name: "Некорректная укладка"
+    report_name: "Некорректная укладка"
+    description: "Нарушение критерия укладки поясничного отдела позвоночника."
+  SPINE_AXIS:
+    display_name: "Не выравнена ось позвоночника"
+    report_name: "Не выравнена ось позвоночника"
+    description: "Ось позвоночника не соответствует требованию выравнивания."
+  SPINE_ARTIFACT:
+    display_name: "Присутствуют посторонние предметы"
+    report_name: "Присутствуют посторонние предметы"
+    description: "На изображении присутствуют посторонние предметы."
+  HIP_POSITION_ROTATION:
+    display_name: "Некорректная укладка"
+    report_name: "Некорректная укладка"
+    description: "Нарушение укладки проксимального отдела бедра; критерий включает ротацию."
+  HIP_ROI:
+    display_name: "Некорректная область интереса"
+    report_name: "Некорректная область интереса"
+    description: "Область интереса проксимального отдела бедра некорректна."
+findings:
+  SCOLIOSIS:
+    display_name: "Сколиоз"
+    report_name: "Сколиоз"
+    description: "Отдельная находка; сама по себе не определяет quality_class."
+  ENDOPROSTHESIS:
+    display_name: "Эндопротез"
+    report_name: "Эндопротез"
+    description: "Отдельная находка; качество изображения оценивается по критериям."
+  NON_DXA_ANATOMY:
+    display_name: "Неожиданные данные"
+    report_name: "Неожиданные данные"
+    description: "Изображение не соответствует ожидаемому DXA-профилю."

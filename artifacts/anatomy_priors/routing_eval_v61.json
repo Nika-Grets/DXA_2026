@@ -1,0 +1,5 @@
+{
+  "n_studies": 100,
+  "exact_set_match_against_nonnull_labels": 98,
+  "note": "Label-derived region sets are incomplete in known anomaly cases; this is a routing sanity check, not a formal image-level accuracy metric."
+}
